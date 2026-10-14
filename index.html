@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytical Exposition Module | SMAN 1 Ngoro Mojokerto</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e'
+                        },
+                        accent: {
+                            50: '#fdf4ff',
+                            100: '#fae8ff',
+                            500: '#d946ef',
+                            600: '#c026d3',
+                            700: '#a21caf'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .nav-btn.active {
+            background-color: rgba(14, 165, 233, 0.15);
+            color: #0284c7;
+            font-weight: 700;
+            border-left: 4px solid #0284c7;
+        }
+        .dark .nav-btn.active {
+            background-color: rgba(14, 165, 233, 0.25);
+            color: #38bdf8;
+            border-left: 4px solid #38bdf8;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col md:flex-row transition-colors duration-300">
+
+    <!-- Sidebar Navigation (Desktop) / Header (Mobile) -->
+    <aside class="w-full md:w-72 bg-white dark:bg-slate-800 border-r border-slate-200 dark:border-slate-700 flex-shrink-0 flex flex-col justify-between z-30 sticky top-0 md:h-screen">
+        <div>
+            <!-- Header Branding with Official SMAN 1 Ngoro Logo -->
+            <div class="p-4 border-b border-slate-200 dark:border-slate-700 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-11 h-11 rounded-full bg-white flex items-center justify-center p-0.5 shadow-md shadow-brand-500/20 border border-slate-200 dark:border-slate-700 flex-shrink-0">
+                        <!-- Official SMAN 1 Ngoro SVG Logo -->
+                        <svg viewBox="0 0 200 200" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="100" cy="100" r="96" fill="#003865"/>
+                            <circle cx="100" cy="100" r="82" fill="#ffffff"/>
+                            <path d="M 40,110 A 60,60 0 0,1 100,40" fill="none" stroke="#00a651" stroke-width="24"/>
+                            <path d="M 100,40 A 60,60 0 0,1 160,110" fill="none" stroke="#ed1c24" stroke-width="24"/>
+                            <circle cx="100" cy="90" r="32" fill="#fff200"/>
+                            <polygon points="100,50 48,125 152,125" fill="#00aeef"/>
+                            <polygon points="100,58 58,122 142,122" fill="#fff200"/>
+                            <polygon points="100,90 60,135 140,135" fill="#1b1464"/>
+                            <path d="M 75,120 Q 87.5,115 100,122 Q 112.5,115 125,120 L 125,130 Q 112.5,125 100,132 Q 87.5,125 75,130 Z" fill="#ffffff"/>
+                            <polygon points="100,22 155,42 100,55 45,42" fill="#231f20"/>
+                            <rect x="96" y="52" width="8" height="10" fill="#231f20"/>
+                            <line x1="145" y1="45" x2="145" y2="60" stroke="#231f20" stroke-width="2.5"/>
+                            <polygon points="100,28 102.5,35 110,35 104,39 106,46 100,42 94,46 96,39 90,35 97.5,35" fill="#ffffff"/>
+                            <polygon points="30,130 170,130 158,148 42,148" fill="#231f20"/>
+                            <text x="100" y="143" font-family="Arial, sans-serif" font-weight="900" font-size="12" fill="#ffffff" text-anchor="middle">SMAN 1 NGORO</text>
+                            <path d="M 80,148 A 20,20 0 0,0 100,165 L 100,148 Z" fill="#00a651"/>
+                            <path d="M 100,148 L 100,165 A 20,20 0 0,0 120,148 Z" fill="#ed1c24"/>
+                            <text x="89" y="161" font-family="Arial, sans-serif" font-weight="bold" font-size="11" fill="#ffffff" text-anchor="middle">9</text>
+                            <text x="111" y="161" font-family="Arial, sans-serif" font-weight="bold" font-size="11" fill="#ffffff" text-anchor="middle">9</text>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-xs font-extrabold leading-tight text-slate-900 dark:text-white uppercase tracking-wider">
+                            SMAN 1 NGORO
+                        </h1>
+                        <p class="text-[11px] text-brand-600 dark:text-brand-400 font-bold">Kab. Mojokerto • English XI</p>
+                    </div>
+                </div>
+                <!-- Theme Toggle Button -->
+                <button onclick="toggleTheme()" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600 transition" title="Toggle Theme">
+                    <i id="themeIcon" data-lucide="moon" class="w-4 h-4"></i>
+                </button>
+            </div>
+
+            <!-- Guru Pengampu Badge -->
+            <div class="p-3 mx-3 my-2 bg-gradient-to-r from-slate-900 via-brand-950 to-slate-900 text-white rounded-xl border border-brand-500/30 text-xs shadow-sm">
+                <div class="text-[10px] text-brand-300 uppercase font-bold tracking-wider mb-0.5">Guru Pengampu</div>
+                <div class="font-bold text-xs text-amber-300 truncate">Mr. KASIADI, S.Ag., S.Pd., M.Pd.</div>
+                <div class="text-[10px] text-slate-300">SMA Negeri 1 Ngoro Mojokerto</div>
+            </div>
+
+            <!-- Student Info & SCORM Badge -->
+            <div class="p-3 mx-3 my-2 bg-brand-50 dark:bg-slate-900/60 rounded-xl border border-brand-100 dark:border-slate-700 text-xs">
+                <div class="flex items-center justify-between mb-1">
+                    <span class="text-slate-500 dark:text-slate-400">Student:</span>
+                    <span id="scormStudentName" class="font-bold text-slate-800 dark:text-slate-200 truncate max-w-[120px]">Learner</span>
+                </div>
+                <div class="flex items-center justify-between">
+                    <span class="text-slate-500 dark:text-slate-400">SCORM 1.2:</span>
+                    <span id="scormBadge" class="inline-flex items-center text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 mr-1 animate-pulse"></span> Connected
+                    </span>
+                </div>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="px-2 space-y-1 overflow-y-auto max-h-[calc(100vh-280px)] no-scrollbar">
+                <button onclick="switchTab('dashboard')" id="nav-dashboard" class="nav-btn active w-full flex items-center space-x-3 px-3 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700/50">
+                    <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
+                    <span>1. Dashboard & Teacher</span>
+                </button>
+                <button onclick="switchTab('materi')" id="nav-materi" class="nav-btn w-full flex items-center space-x-3 px-3 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700/50">
+                    <i data-lucide="book-open" class="w-4 h-4"></i>
+                    <span>2. Concept Material</span>
+                </button>
+                <button onclick="switchTab('kasus')" id="nav-kasus" class="nav-btn w-full flex items-center space-x-3 px-3 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700/50">
+                    <i data-lucide="compass" class="w-4 h-4"></i>
+                    <span>3. Case Study & Decision</span>
+                </button>
+                <button onclick="switchTab('simulasi')" id="nav-simulasi" class="nav-btn w-full flex items-center space-x-3 px-3 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700/50">
+                    <i data-lucide="flask-conical" class="w-4 h-4"></i>
+                    <span>4. Essay Builder Lab</span>
+                </button>
+                <button onclick="switchTab('games')" id="nav-games" class="nav-btn w-full flex items-center space-x-3 px-3 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700/50">
+                    <i data-lucide="gamepad-2" class="w-4 h-4"></i>
+                    <span>5. Practice & Games</span>
+                </button>
+                <button onclick="switchTab('evaluasi')" id="nav-evaluasi" class="nav-btn w-full flex items-center space-x-3 px-3 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700/50">
+                    <i data-lucide="award" class="w-4 h-4"></i>
+                    <span>6. SCORM Quiz Assessment</span>
+                </button>
+                <button onclick="switchTab('refleksi')" id="nav-refleksi" class="nav-btn w-full flex items-center space-x-3 px-3 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700/50">
+                    <i data-lucide="pen-tool" class="w-4 h-4"></i>
+                    <span>7. Notes & Reflection</span>
+                </button>
+            </nav>
+        </div>
+
+        <!-- Sidebar Footer -->
+        <div class="p-3 border-t border-slate-200 dark:border-slate-700 text-[11px] text-slate-500 dark:text-slate-400 text-center">
+            Interactive SCORM 1.2 Module<br>
+            <span class="font-bold text-slate-700 dark:text-slate-300">SMAN 1 Ngoro Mojokerto</span>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow p-4 sm:p-6 lg:p-8 max-w-6xl mx-auto w-full overflow-y-auto">
+
+        <!-- TAB 1: DASHBOARD & OVERVIEW -->
+        <section id="content-dashboard" class="tab-content space-y-6">
+            <!-- Hero Banner -->
+            <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-brand-900 via-brand-800 to-slate-900 text-white p-6 sm:p-8 shadow-xl">
+                <div class="relative z-10 space-y-3">
+                    <div class="inline-flex items-center space-x-2 px-3 py-1 bg-brand-500/30 border border-brand-400/40 rounded-full text-xs font-semibold text-brand-200">
+                        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                        <span>Analytical Exposition Module • SMAN 1 Ngoro</span>
+                    </div>
+                    <h2 class="text-2xl sm:text-4xl font-extrabold leading-tight">
+                        Welcome back, <span id="heroStudentName" class="text-sky-400">Learner</span>!
+                    </h2>
+                    <p class="text-slate-200 text-xs sm:text-sm max-w-2xl leading-relaxed">
+                        Selamat datang di media pembelajaran digital interaktif Bahasa Inggris Kelas XI SMA Negeri 1 Ngoro Mojokerto. Modul ini dirancang khusus untuk membantu Anda menguasai struktur teks, <em>thesis statement</em>, <em>causal conjunctions</em>, dan teknik persuasi dalam <strong>Analytical Exposition Text</strong>.
+                    </p>
+                    <div class="pt-2 flex flex-wrap gap-3">
+                        <button onclick="switchTab('materi')" class="px-5 py-2.5 bg-brand-500 hover:bg-brand-400 text-white font-bold text-xs sm:text-sm rounded-xl shadow-lg shadow-brand-500/30 transition flex items-center space-x-2">
+                            <span>Mulai Pelajari Materi</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </button>
+                        <button onclick="switchTab('simulasi')" class="px-5 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-600 font-bold text-xs sm:text-sm rounded-xl transition flex items-center space-x-2">
+                            <i data-lucide="flask-conical" class="w-4 h-4 text-sky-400"></i>
+                            <span>Buka Essay Lab</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- Background visual element -->
+                <div class="absolute -right-12 -bottom-12 w-64 h-64 bg-brand-500/20 rounded-full blur-3xl pointer-events-none"></div>
+            </div>
+
+            <!-- Guru Pengampu & Guidance Card (with Teacher Portrait) -->
+            <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 shadow-sm flex flex-col md:flex-row items-center gap-6">
+                <div class="relative flex-shrink-0">
+                    <div class="w-32 h-32 sm:w-36 sm:h-36 rounded-2xl overflow-hidden border-4 border-amber-400/80 shadow-xl bg-slate-900 flex items-center justify-center relative">
+                        <!-- Custom SVG Portrait of Mr. Kasiadi based on photo -->
+                        <svg viewBox="0 0 160 160" class="w-full h-full rounded-2xl object-cover" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#1e293b"/>
+                                    <stop offset="100%" stop-color="#0f172a"/>
+                                </linearGradient>
+                                <linearGradient id="batikGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#991b1b"/>
+                                    <stop offset="100%" stop-color="#7f1d1d"/>
+                                </linearGradient>
+                            </defs>
+                            <!-- Background -->
+                            <rect width="160" height="160" fill="url(#bgGrad)"/>
+                            <path d="M 0,40 L 160,40 M 0,80 L 160,80 M 0,120 L 160,120" stroke="#334155" stroke-width="1" opacity="0.3"/>
+                            
+                            <!-- Body / Batik Garment -->
+                            <path d="M 20,160 Q 20,112 80,112 Q 140,112 140,160 Z" fill="url(#batikGrad)"/>
+                            <!-- Batik Motif Highlights -->
+                            <path d="M 35,130 C 50,120 60,150 80,130 C 100,150 110,120 125,130" stroke="#fde047" stroke-width="1.5" fill="none" opacity="0.7"/>
+                            <path d="M 45,145 C 60,135 70,160 80,145 C 90,160 100,135 115,145" stroke="#fca5a5" stroke-width="1.5" fill="none" opacity="0.6"/>
+                            
+                            <!-- Neck -->
+                            <rect x="70" y="88" width="20" height="28" rx="4" fill="#f5d0c5"/>
+                            <path d="M 70,105 L 80,115 L 90,105" fill="#e2a899"/>
+                            
+                            <!-- Face -->
+                            <ellipse cx="80" cy="70" rx="24" ry="27" fill="#f5d0c5"/>
+                            <circle cx="55" cy="72" r="5" fill="#f5d0c5"/>
+                            <circle cx="105" cy="72" r="5" fill="#f5d0c5"/>
+                            
+                            <!-- Glasses -->
+                            <rect x="61" y="64" width="15" height="11" rx="2" fill="none" stroke="#0f172a" stroke-width="2"/>
+                            <rect x="84" y="64" width="15" height="11" rx="2" fill="none" stroke="#0f172a" stroke-width="2"/>
+                            <line x1="76" y1="69" x2="84" y2="69" stroke="#0f172a" stroke-width="2"/>
+                            <line x1="56" y1="68" x2="61" y2="68" stroke="#0f172a" stroke-width="2"/>
+                            <line x1="99" y1="68" x2="104" y2="68" stroke="#0f172a" stroke-width="2"/>
+                            
+                            <!-- Eyes -->
+                            <circle cx="68" cy="69" r="2.5" fill="#0f172a"/>
+                            <circle cx="91" cy="69" r="2.5" fill="#0f172a"/>
+                            
+                            <!-- Eyebrows -->
+                            <path d="M 60,60 Q 68,57 75,61" fill="none" stroke="#334155" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M 85,61 Q 92,57 100,60" fill="none" stroke="#334155" stroke-width="2" stroke-linecap="round"/>
+                            
+                            <!-- Smile & Teeth -->
+                            <path d="M 70,82 Q 80,91 90,82" fill="none" stroke="#991b1b" stroke-width="2.5" stroke-linecap="round"/>
+                            <path d="M 72,83 Q 80,88 88,83" fill="#ffffff"/>
+                            
+                            <!-- Peci (Black Cap) -->
+                            <path d="M 53,50 C 53,30 60,28 80,28 C 100,28 107,30 107,50 Z" fill="#0f172a"/>
+                            <rect x="52" y="46" width="56" height="7" rx="1" fill="#1e293b"/>
+                            
+                            <!-- Name Badge Tag -->
+                            <rect x="42" y="126" width="30" height="7" rx="1.5" fill="#0f172a" stroke="#fbbf24" stroke-width="0.5"/>
+                            <text x="57" y="131.5" font-family="sans-serif" font-weight="bold" font-size="4" fill="#ffffff" text-anchor="middle">KASIADI</text>
+                            
+                            <!-- Thumbs Up Gesture Icon -->
+                            <circle cx="128" cy="112" r="14" fill="#0284c7" stroke="#ffffff" stroke-width="2"/>
+                            <path d="M 124,115 L 124,110 C 124,107 126,105 128,105 C 129.5,105 130,106 130,108 L 129,111 L 132,111 C 133.5,111 134,112 134,113 C 134,113.5 133.7,114 133.5,114.2 C 133.8,114.5 134,115 134,115.5 C 134,116.5 133,117 132,117 L 127,117 C 125,117 124,116 124,115 Z" fill="#ffffff"/>
+                        </svg>
+                    </div>
+                    <span class="absolute -bottom-2 -right-2 bg-amber-500 text-slate-950 font-extrabold text-[10px] px-2.5 py-1 rounded-full shadow-md border border-amber-300 flex items-center space-x-1">
+                        <i data-lucide="check-circle-2" class="w-3 h-3 text-slate-950"></i>
+                        <span>GURU PENGAMPU</span>
+                    </span>
+                </div>
+                <div class="space-y-2 text-center md:text-left flex-grow">
+                    <div class="inline-flex items-center space-x-2 px-2.5 py-0.5 rounded-full bg-brand-50 dark:bg-slate-900 border border-brand-200 dark:border-slate-700 text-[11px] font-bold text-brand-700 dark:text-brand-300">
+                        <i data-lucide="award" class="w-3.5 h-3.5 text-brand-500"></i>
+                        <span>Pengajar Bahasa Inggris Utama</span>
+                    </div>
+                    <h3 class="text-xl font-extrabold text-slate-900 dark:text-white">
+                        Mr. KASIADI, S.Ag., S.Pd., M.Pd.
+                    </h3>
+                    <p class="text-xs font-semibold text-brand-600 dark:text-brand-400">
+                        SMA Negeri 1 Ngoro Mojokerto
+                    </p>
+                    <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl italic">
+                        "Selamat belajar anak-anak hebat! Pelajari setiap bagian modul ini secara bertahap. Manfaatkan Laboratorium Simulasi Essay untuk menguji kekuatan argumen Anda, dan selesaikan Evaluasi SCORM dengan nilai minimal 75 untuk kelulusan."
+                    </p>
+                </div>
+            </div>
+
+            <!-- Objectives & IKTP Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Learning Goal -->
+                <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-3">
+                    <div class="w-10 h-10 rounded-xl bg-brand-100 dark:bg-brand-950 text-brand-600 dark:text-brand-400 flex items-center justify-center font-bold">
+                        <i data-lucide="target" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 dark:text-white text-base">Capaian Pembelajaran (CP)</h3>
+                    <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                        Siswa mampu menganalisis fungsi sosial, struktur teks, dan unsur kebahasaan dari teks eksposisi analitis lisan dan tulis sesuai standar kurikulum SMAN 1 Ngoro.
+                    </p>
+                </div>
+
+                <!-- IKTP Indicators -->
+                <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-3">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold">
+                        <i data-lucide="check-circle-2" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 dark:text-white text-base">Indikator Ketercapaian (IKTP)</h3>
+                    <ul class="text-xs text-slate-600 dark:text-slate-300 space-y-1.5 list-disc list-inside">
+                        <li>Mengidentifikasi struktur <em>Thesis, Arguments, Reiteration</em>.</li>
+                        <li>Menggunakan <em>Causal Conjunctions</em> (*therefore*, *because*).</li>
+                        <li>Membedakan fakta dan evaluasi opini penulis.</li>
+                    </ul>
+                </div>
+
+                <!-- SCORM Progress Card -->
+                <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-3">
+                    <div class="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold">
+                        <i data-lucide="trophy" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 dark:text-white text-base">SCORM LMS Progress</h3>
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-xs font-semibold">
+                            <span class="text-slate-500">Passing Grade: 75/100</span>
+                            <span id="dashScoreVal" class="text-brand-600 dark:text-brand-400">0 / 100</span>
+                        </div>
+                        <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2.5 overflow-hidden">
+                            <div id="dashScoreBar" class="bg-brand-600 h-2.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+                        </div>
+                        <div class="flex justify-between items-center text-[11px] pt-1">
+                            <span class="text-slate-400">Lesson Status:</span>
+                            <span id="dashStatusTag" class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-700 font-semibold text-slate-600 dark:text-slate-300">Not Attempted</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Prerequisite Concepts -->
+            <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
+                <h3 class="text-base font-bold text-slate-900 dark:text-white flex items-center">
+                    <i data-lucide="key" class="w-5 h-5 text-brand-600 dark:text-brand-400 mr-2"></i>
+                    Prerequisite Knowledge (Prasyarat Konsep)
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+                    <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                        <div class="font-bold text-slate-800 dark:text-slate-200 mb-1">Simple Present Tense</div>
+                        <p class="text-slate-500 dark:text-slate-400">Analytical Exposition uses present verbs (*is, are, state, show, think, causes*) to state general truths and opinions.</p>
+                    </div>
+                    <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                        <div class="font-bold text-slate-800 dark:text-slate-200 mb-1">Opinion vs Fact</div>
+                        <p class="text-slate-500 dark:text-slate-400">Facts provide verifiable data, while opinions state the writer's stance or judgment supported by arguments.</p>
+                    </div>
+                    <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                        <div class="font-bold text-slate-800 dark:text-slate-200 mb-1">Connectors / Transitions</div>
+                        <p class="text-slate-500 dark:text-slate-400">Words like *firstly, furthermore, on the other hand, consequently* build smooth transitions between ideas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: CONCEPT MATERIAL -->
+        <section id="content-materi" class="tab-content hidden space-y-6">
+            <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+                <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-2 flex items-center">
+                    <i data-lucide="book-open" class="w-6 h-6 text-brand-600 dark:text-brand-400 mr-3"></i>
+                    Analytical Exposition Text: Concept & Structure
+                </h2>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                    An <strong>Analytical Exposition Text</strong> is a type of argumentative text that evaluates an issue or topic critically to convince readers that the topic is important and deserves serious attention.
+                </p>
+            </div>
+
+            <!-- Generic Structure Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- 1. THESIS -->
+                <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border-2 border-brand-200 dark:border-brand-900/60 shadow-sm space-y-3">
+                    <div class="flex items-center justify-between">
+                        <span class="px-2.5 py-1 bg-brand-600 text-white font-bold text-xs rounded-lg">Part 1</span>
+                        <i data-lucide="flag" class="w-5 h-5 text-brand-500"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white">Thesis (Statement)</h3>
+                    <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                        Introduces the topic, indicates the writer's position/opinion, and outlines the main points that will be discussed.
+                    </p>
+                    <div class="p-2.5 bg-brand-50 dark:bg-slate-900 rounded-xl text-[11px] text-brand-900 dark:text-brand-200 font-mono">
+                        Example: "Digital literacy is an essential skill that must be integrated into all high school curricula."
+                    </div>
+                </div>
+
+                <!-- 2. ARGUMENTS -->
+                <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border-2 border-sky-200 dark:border-sky-900/60 shadow-sm space-y-3">
+                    <div class="flex items-center justify-between">
+                        <span class="px-2.5 py-1 bg-sky-600 text-white font-bold text-xs rounded-lg">Part 2</span>
+                        <i data-lucide="layers" class="w-5 h-5 text-sky-500"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white">Arguments (Body)</h3>
+                    <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                        Consists of several paragraphs. Each argument starts with a <strong>Topic Sentence</strong> supported by evidence, research, or logical reasoning.
+                    </p>
+                    <div class="p-2.5 bg-sky-50 dark:bg-slate-900 rounded-xl text-[11px] text-sky-900 dark:text-sky-200 font-mono">
+                        Example: "Firstly, it prevents students from falling victim to online misinformation and scam attacks."
+                    </div>
+                </div>
+
+                <!-- 3. REITERATION -->
+                <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border-2 border-indigo-200 dark:border-indigo-900/60 shadow-sm space-y-3">
+                    <div class="flex items-center justify-between">
+                        <span class="px-2.5 py-1 bg-indigo-600 text-white font-bold text-xs rounded-lg">Part 3</span>
+                        <i data-lucide="rotate-ccw" class="w-5 h-5 text-indigo-500"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white">Reiteration (Conclusion)</h3>
+                    <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                        Restates the writer's thesis and summarizes the main arguments to leave a lasting persuasive impression on readers.
+                    </p>
+                    <div class="p-2.5 bg-indigo-50 dark:bg-slate-900 rounded-xl text-[11px] text-indigo-900 dark:text-indigo-200 font-mono">
+                        Example: "From the reasons above, it is clear that digital literacy education is crucial for youth."
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Glossary Cards -->
+            <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
+                <h3 class="text-base font-bold text-slate-900 dark:text-white flex items-center">
+                    <i data-lucide="bookmark-check" class="w-5 h-5 text-brand-600 dark:text-brand-400 mr-2"></i>
+                    Interactive Language Features Glossary (Ciri Kebahasaan)
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
+                    <div onclick="toggleGlossary('g1')" class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 cursor-pointer hover:border-brand-500 transition">
+                        <div class="flex justify-between items-center font-bold text-brand-600 dark:text-brand-400">
+                            <span>1. Mental Verbs</span>
+                            <i id="g1-icon" data-lucide="chevron-down" class="w-4 h-4"></i>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-300 mt-1">Verbs that express thinking, feeling, or perceiving.</p>
+                        <div id="g1-detail" class="hidden mt-2 pt-2 border-t border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400">
+                            <strong>Examples:</strong> <em>feel, believe, realize, understand, think, assume.</em>
+                        </div>
+                    </div>
+
+                    <div onclick="toggleGlossary('g2')" class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 cursor-pointer hover:border-brand-500 transition">
+                        <div class="flex justify-between items-center font-bold text-sky-600 dark:text-sky-400">
+                            <span>2. Causal Conjunctions</span>
+                            <i id="g2-icon" data-lucide="chevron-down" class="w-4 h-4"></i>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-300 mt-1">Words linking cause and effect relationships.</p>
+                        <div id="g2-detail" class="hidden mt-2 pt-2 border-t border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400">
+                            <strong>Examples:</strong> <em>because, consequently, as a result, therefore, since.</em>
+                        </div>
+                    </div>
+
+                    <div onclick="toggleGlossary('g3')" class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 cursor-pointer hover:border-brand-500 transition">
+                        <div class="flex justify-between items-center font-bold text-indigo-600 dark:text-indigo-400">
+                            <span>3. Evaluative Language</span>
+                            <i id="g3-icon" data-lucide="chevron-down" class="w-4 h-4"></i>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-300 mt-1">Words indicating value judgments or importance.</p>
+                        <div id="g3-detail" class="hidden mt-2 pt-2 border-t border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400">
+                            <strong>Examples:</strong> <em>crucial, dangerous, beneficial, vital, significant.</em>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 3: CASE STUDY & DECISION EXPLORATION -->
+        <section id="content-kasus" class="tab-content hidden space-y-6">
+            <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+                <div class="flex items-center space-x-3">
+                    <div class="p-3 bg-amber-100 dark:bg-amber-950 text-amber-600 dark:text-amber-400 rounded-xl">
+                        <i data-lucide="compass" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">Real-World Case Study: Social Media Policy</h2>
+                        <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+                            Help the SMAN 1 Ngoro Student Council formulate a persuasive Analytical Exposition text!
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Scenario Card -->
+            <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-6">
+                <div class="p-4 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 space-y-2">
+                    <span class="px-2.5 py-0.5 bg-amber-500 text-white font-bold text-[10px] uppercase rounded">Context Scenario</span>
+                    <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm sm:text-base">
+                        Should High Schools Enforce a Complete Ban on Smartphones During Class Hours?
+                    </h3>
+                    <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                        The principal wants to make a decision. The student body is divided. You are tasked with drafting a strong <strong>Analytical Exposition Text</strong> supporting a balanced smartphone policy with educational integration.
+                    </p>
+                </div>
+
+                <!-- Step-by-step Decision Tree -->
+                <div class="space-y-4 text-xs">
+                    <!-- Decision 1: Thesis Selection -->
+                    <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-700 space-y-3">
+                        <div class="font-bold text-slate-800 dark:text-slate-200 text-sm flex items-center">
+                            <span class="w-5 h-5 rounded-full bg-brand-600 text-white flex items-center justify-center text-[10px] mr-2">1</span>
+                            Choose the Strongest Thesis Statement:
+                        </div>
+                        <div class="grid grid-cols-1 gap-2">
+                            <button onclick="selectCaseDecision(1, 'A')" id="c1-a" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 transition">
+                                <strong>Option A:</strong> Smartphones are fun and students should use them whenever they like in class.
+                            </button>
+                            <button onclick="selectCaseDecision(1, 'B')" id="c1-b" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 transition">
+                                <strong>Option B:</strong> Rather than a total ban, integrating smartphones with strict educational guidelines enhances modern digital research and student engagement.
+                            </button>
+                        </div>
+                        <div id="caseFeedback1" class="hidden p-3 rounded-lg text-xs"></div>
+                    </div>
+
+                    <!-- Decision 2: Argument Evidence Selection -->
+                    <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-700 space-y-3">
+                        <div class="font-bold text-slate-800 dark:text-slate-200 text-sm flex items-center">
+                            <span class="w-5 h-5 rounded-full bg-brand-600 text-white flex items-center justify-center text-[10px] mr-2">2</span>
+                            Select the Most Valid Supporting Evidence for Argument 1:
+                        </div>
+                        <div class="grid grid-cols-1 gap-2">
+                            <button onclick="selectCaseDecision(2, 'A')" id="c2-a" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 transition">
+                                <strong>Option A:</strong> Many students prefer smartphones because playing games reduces boredom during lectures.
+                            </button>
+                            <button onclick="selectCaseDecision(2, 'B')" id="c2-b" class="p-3 text-left rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 transition">
+                                <strong>Option B:</strong> Studies show that quick access to digital learning platforms (e.g., dictionary, simulation apps) increases student learning autonomy by 35%.
+                            </button>
+                        </div>
+                        <div id="caseFeedback2" class="hidden p-3 rounded-lg text-xs"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 4: ESSAY BUILDER LAB (INTERACTIVE SIMULATION) -->
+        <section id="content-simulasi" class="tab-content hidden space-y-6">
+            <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div>
+                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white flex items-center">
+                        <i data-lucide="flask-conical" class="w-6 h-6 text-brand-600 dark:text-brand-400 mr-3"></i>
+                        Analytical Exposition Essay Builder Lab
+                    </h2>
+                    <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+                        Assemble thesis statements, evidence weight, and causal transitions to test persuasive essay power!
+                    </p>
+                </div>
+                <div class="flex space-x-2">
+                    <button onclick="runLabSimulation()" class="px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs rounded-xl shadow transition flex items-center space-x-1">
+                        <i data-lucide="play" class="w-4 h-4"></i>
+                        <span>Test & Analyze Essay</span>
+                    </button>
+                    <button onclick="resetLabSimulation()" class="px-3 py-2 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 font-bold text-xs rounded-xl transition">
+                        <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Lab Controls & Live Visual Gauge Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <!-- Left Column: Controls (7 cols) -->
+                <div class="lg:col-span-7 bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
+                    <h3 class="font-bold text-slate-900 dark:text-white text-sm flex items-center">
+                        <i data-lucide="sliders" class="w-4 h-4 text-brand-500 mr-2"></i> Essay Parameters & Components
+                    </h3>
+
+                    <!-- 1. Topic Selector -->
+                    <div class="space-y-1 text-xs">
+                        <label class="font-semibold text-slate-700 dark:text-slate-300">Select Topic:</label>
+                        <select id="labTopic" onchange="updateLabPreview()" class="w-full p-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 font-medium">
+                            <option value="cashless">Cashless Payment Benefits in Modern Cities</option>
+                            <option value="exercise">Daily Physical Exercise for Academic Focus</option>
+                            <option value="recycling">Mandatory Waste Sorting in Schools</option>
+                        </select>
+                    </div>
+
+                    <!-- 2. Thesis Tone Switcher -->
+                    <div class="space-y-1 text-xs">
+                        <label class="font-semibold text-slate-700 dark:text-slate-300">Thesis Statement Tone:</label>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button onclick="setLabTone('formal')" id="labToneFormal" class="p-2.5 rounded-xl border-2 border-brand-500 bg-brand-50 dark:bg-brand-950/50 font-bold text-brand-600 dark:text-brand-400">
+                                Formal Academic (Strong)
+                            </button>
+                            <button onclick="setLabTone('weak')" id="labToneWeak" class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-500">
+                                Vague Opinion (Weak)
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 3. Evidence Strength Toggle -->
+                    <div class="space-y-1 text-xs">
+                        <label class="font-semibold text-slate-700 dark:text-slate-300">Argument Evidence Level:</label>
+                        <select id="labEvidence" onchange="updateLabPreview()" class="w-full p-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 font-medium">
+                            <option value="high">High (Includes Statistical Research & Facts)</option>
+                            <option value="medium">Medium (General Logical Reasoning)</option>
+                            <option value="low">Low (Personal Anecdote without Data)</option>
+                        </select>
+                    </div>
+
+                    <!-- 4. Causal Conjunction Transition Selector -->
+                    <div class="space-y-1 text-xs">
+                        <label class="font-semibold text-slate-700 dark:text-slate-300">Causal Connectors Used:</label>
+                        <select id="labConnector" onchange="updateLabPreview()" class="w-full p-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 font-medium">
+                            <option value="appropriate">Therefore, Consequently, As a result (Clear Causal)</option>
+                            <option value="weak">And then, Also, By the way (Weak Logical Link)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Right Column: Visual Gauge Canvas & Live Preview (5 cols) -->
+                <div class="lg:col-span-5 space-y-4">
+                    <!-- Visual Performance Gauge (Canvas) -->
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm text-center">
+                        <h4 class="font-bold text-slate-800 dark:text-slate-200 text-xs mb-2">Persuasive Power Meter</h4>
+                        <div class="relative flex justify-center items-center">
+                            <canvas id="persuasiveCanvas" width="220" height="140" class="mx-auto"></canvas>
+                        </div>
+                        <div id="persuasiveScoreText" class="text-xl font-extrabold text-brand-600 dark:text-brand-400 mt-1">
+                            0%
+                        </div>
+                        <p id="persuasiveRatingLabel" class="text-[11px] text-slate-500 font-medium">Click "Test & Analyze Essay" to evaluate structure.</p>
+                    </div>
+
+                    <!-- Live Essay Structural Preview -->
+                    <div class="bg-slate-900 text-slate-100 p-4 rounded-2xl border border-slate-800 text-xs space-y-2 font-mono max-h-60 overflow-y-auto no-scrollbar">
+                        <div class="text-[10px] text-brand-400 font-bold uppercase tracking-wider">Live Essay Structure Preview</div>
+                        <div id="essayLivePreview" class="space-y-2 text-[11px] leading-relaxed">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Experiment Log Panel -->
+            <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-3">
+                <h3 class="font-bold text-slate-900 dark:text-white text-xs flex items-center">
+                    <i data-lucide="list" class="w-4 h-4 text-brand-500 mr-2"></i> Practical Log Data Panel
+                </h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse text-xs">
+                        <thead>
+                            <tr class="bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400 border-b border-slate-200 dark:border-slate-700">
+                                <th class="p-2 font-semibold">Test #</th>
+                                <th class="p-2 font-semibold">Topic</th>
+                                <th class="p-2 font-semibold">Tone</th>
+                                <th class="p-2 font-semibold">Evidence</th>
+                                <th class="p-2 font-semibold">Persuasive Power</th>
+                                <th class="p-2 font-semibold">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="labLogTableBody" class="divide-y divide-slate-200 dark:divide-slate-700">
+                            <tr>
+                                <td colspan="6" class="p-4 text-center text-slate-400 italic">No lab tests conducted yet. Click "Test & Analyze Essay".</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 5: FORMATIVE PRACTICE & MINI GAMES -->
+        <section id="content-games" class="tab-content hidden space-y-6">
+            <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+                <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-2 flex items-center">
+                    <i data-lucide="gamepad-2" class="w-6 h-6 text-brand-600 dark:text-brand-400 mr-3"></i>
+                    Interactive Mini-Games & Practice
+                </h2>
+                <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+                    Test your quick identification skills! Non-graded practice exercises.
+                </p>
+            </div>
+
+            <!-- Game 1: Component Classifier -->
+            <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <span class="px-2 py-0.5 bg-brand-100 dark:bg-brand-950 text-brand-700 dark:text-brand-300 font-bold text-[10px] rounded">GAME 1</span>
+                        <h3 class="font-bold text-slate-900 dark:text-white text-base">Structure Component Classifier</h3>
+                    </div>
+                    <button onclick="checkClassifierGame()" class="px-3 py-1.5 bg-brand-600 text-white font-bold text-xs rounded-xl hover:bg-brand-700 transition">
+                        Check Answers
+                    </button>
+                </div>
+
+                <div id="classifierList" class="space-y-3 text-xs">
+                    <!-- Populated via JS -->
+                </div>
+
+                <div id="classifierFeedback" class="hidden p-3 rounded-xl text-xs font-semibold"></div>
+            </div>
+        </section>
+
+        <!-- TAB 6: EVALUASI AKHIR / ASESMEN SCORM -->
+        <section id="content-evaluasi" class="tab-content hidden space-y-6">
+            <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div>
+                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white flex items-center">
+                        <i data-lucide="award" class="w-6 h-6 text-brand-600 dark:text-brand-400 mr-3"></i>
+                        SCORM Final Assessment Quiz
+                    </h2>
+                    <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+                        Selesaikan 5 soal evaluasi di bawah ini. Skor akhir Anda akan disinkronkan secara otomatis ke LMS SMAN 1 Ngoro.
+                    </p>
+                </div>
+                <div class="p-3 bg-brand-50 dark:bg-slate-900 border border-brand-200 dark:border-slate-700 rounded-xl text-center min-w-[120px]">
+                    <div class="text-[10px] text-slate-400 uppercase font-bold">Passing Grade</div>
+                    <div class="text-lg font-extrabold text-brand-600 dark:text-brand-400">75 / 100</div>
+                </div>
+            </div>
+
+            <!-- Reading Passage -->
+            <div class="bg-slate-100 dark:bg-slate-800/80 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 space-y-3 text-xs leading-relaxed">
+                <span class="px-2.5 py-0.5 bg-slate-800 text-white font-bold text-[10px] rounded uppercase">Reading Text</span>
+                <h3 class="font-bold text-slate-900 dark:text-white text-sm">Why Digital Literacy is Essential for High School Students</h3>
+                <p>In the modern information era, digital literacy is no longer a luxury but an absolute necessity. High school students are constantly exposed to vast amounts of online information, making critical evaluation skills indispensable.</p>
+                <p>Firstly, digital literacy empowers students to distinguish between credible scientific research and harmful fake news. Without proper training, young individuals can easily fall prey to scams or spreading misinformation. Secondly, mastering digital tools enhances future career readiness, as nearly all modern industries require digital communication and collaboration software skills.</p>
+                <p>Therefore, integrating comprehensive digital literacy training into the school curriculum is crucial for developing responsible and capable future citizens.</p>
+            </div>
+
+            <!-- Quiz Questions Form -->
+            <form id="scormQuizForm" class="space-y-6">
+                <div id="quizQuestionsContainer" class="space-y-6">
+                    <!-- Populated dynamically by JS -->
+                </div>
+
+                <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div class="text-xs text-slate-500">
+                        <i data-lucide="info" class="w-4 h-4 inline text-brand-500 mr-1"></i>
+                        Pastikan semua soal terjawab sebelum menekan tombol submit.
+                    </div>
+                    <button type="button" onclick="submitScormQuiz()" class="w-full sm:w-auto px-8 py-3 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs sm:text-sm rounded-xl shadow-lg shadow-brand-500/25 transition">
+                        Submit & Commit Score to LMS
+                    </button>
+                </div>
+            </form>
+
+            <!-- Quiz Result Modal -->
+            <div id="quizResultModal" class="hidden bg-white dark:bg-slate-800 p-6 sm:p-8 rounded-2xl border-2 border-brand-500 shadow-2xl space-y-6">
+                <div class="text-center space-y-2">
+                    <div id="resultIcon" class="w-16 h-16 mx-auto rounded-full flex items-center justify-center text-3xl"></div>
+                    <h3 id="resultTitle" class="text-2xl font-extrabold text-slate-900 dark:text-white"></h3>
+                    <p id="resultSubtitle" class="text-xs sm:text-sm text-slate-500 dark:text-slate-400"></p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+                    <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700">
+                        <div class="text-xs text-slate-500">Final Score</div>
+                        <div id="finalScoreVal" class="text-3xl font-extrabold text-brand-600 dark:text-brand-400">0</div>
+                    </div>
+                    <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700">
+                        <div class="text-xs text-slate-500">Lesson Status</div>
+                        <div id="finalStatusVal" class="text-lg font-bold mt-1">PASSED</div>
+                    </div>
+                    <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700">
+                        <div class="text-xs text-slate-500">SCORM LMS Sync</div>
+                        <div id="finalScormSync" class="text-xs font-semibold mt-2 text-emerald-600 dark:text-emerald-400">
+                            Synchronized
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-3 justify-center pt-2">
+                    <button onclick="resetQuiz()" class="px-5 py-2.5 bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold text-xs rounded-xl">
+                        Ulangi Quiz
+                    </button>
+                    <button onclick="switchTab('dashboard')" class="px-5 py-2.5 bg-brand-600 text-white font-bold text-xs rounded-xl">
+                        Kembali ke Dashboard
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 7: NOTES & REFLECTION -->
+        <section id="content-refleksi" class="tab-content hidden space-y-6">
+            <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+                <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-2 flex items-center">
+                    <i data-lucide="pen-tool" class="w-6 h-6 text-brand-600 dark:text-brand-400 mr-3"></i>
+                    Student Notes & Self-Reflection
+                </h2>
+                <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+                    Catat ringkasan pembelajaran dan isi lembar refleksi mandiri Anda. Catatan akan tersimpan otomatis.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Notes Textarea -->
+                <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-3">
+                    <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm">Catatan Mandiri Siswa</h3>
+                    <textarea id="studentNotes" oninput="saveStudentNotes()" rows="10" placeholder="Tuliskan poin penting dari Mr. Kasiadi, kosakata baru, atau draf argumen Anda di sini..." class="w-full p-3 text-xs rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500"></textarea>
+                    <div id="notesSaveMsg" class="text-[10px] text-emerald-600 font-semibold hidden">
+                        Tersimpan otomatis di memori lokal!
+                    </div>
+                </div>
+
+                <!-- Self-Reflection Checklist -->
+                <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-3 text-xs">
+                    <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm">Checklist Refleksi Diri</h3>
+                    <div class="space-y-2">
+                        <label class="flex items-start space-x-2 p-2 rounded-lg bg-slate-50 dark:bg-slate-900 cursor-pointer">
+                            <input type="checkbox" id="ref1" onchange="saveReflections()" class="mt-0.5 rounded text-brand-600">
+                            <span>Saya memahami tujuan utama teks Analytical Exposition.</span>
+                        </label>
+                        <label class="flex items-start space-x-2 p-2 rounded-lg bg-slate-50 dark:bg-slate-900 cursor-pointer">
+                            <input type="checkbox" id="ref2" onchange="saveReflections()" class="mt-0.5 rounded text-brand-600">
+                            <span>Saya dapat mengidentifikasi bagian Thesis, Arguments, dan Reiteration.</span>
+                        </label>
+                        <label class="flex items-start space-x-2 p-2 rounded-lg bg-slate-50 dark:bg-slate-900 cursor-pointer">
+                            <input type="checkbox" id="ref3" onchange="saveReflections()" class="mt-0.5 rounded text-brand-600">
+                            <span>Saya mampu menggunakan kata hubung kausalitas (*because, therefore, consequently*).</span>
+                        </label>
+                        <label class="flex items-start space-x-2 p-2 rounded-lg bg-slate-50 dark:bg-slate-900 cursor-pointer">
+                            <input type="checkbox" id="ref4" onchange="saveReflections()" class="mt-0.5 rounded text-brand-600">
+                            <span>Saya dapat membedakan fakta ilmiah dari klaim opini yang lemah.</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- JAVASCRIPT CORE LOGIC -->
+    <script>
+        var scormAPI = null;
+        var isScormConnected = false;
+
+        function findSCORMAPI(win) {
+            var attempts = 0;
+            while ((win.API == null) && (win.parent != null) && (win.parent != win)) {
+                attempts++;
+                if (attempts > 10) return null;
+                win = win.parent;
+            }
+            return win.API;
+        }
+
+        function initSCORM() {
+            try {
+                scormAPI = findSCORMAPI(window);
+                if (!scormAPI && window.opener) {
+                    scormAPI = findSCORMAPI(window.opener);
+                }
+
+                if (scormAPI) {
+                    var result = scormAPI.LMSInitialize("");
+                    if (result === "true" || result === true) {
+                        isScormConnected = true;
+                        
+                        var studentName = scormAPI.LMSGetValue("cmi.core.student_name");
+                        if (studentName && studentName.trim() !== "") {
+                            document.getElementById('scormStudentName').innerText = studentName;
+                            document.getElementById('heroStudentName').innerText = studentName;
+                        }
+
+                        var existingScore = scormAPI.LMSGetValue("cmi.core.score.raw");
+                        if (existingScore && !isNaN(existingScore)) {
+                            updateScoreUI(parseInt(existingScore));
+                        }
+                    }
+                } else {
+                    console.log("SCORM 1.2 API not found. Running in standalone preview mode.");
+                    updateScormBadgeStandalone();
+                }
+            } catch (err) {
+                console.warn("SCORM init warning:", err);
+                updateScormBadgeStandalone();
+            }
+        }
+
+        function updateScormBadgeStandalone() {
+            var badge = document.getElementById('scormBadge');
+            if (badge) {
+                badge.className = "inline-flex items-center text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300";
+                badge.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-amber-500 mr-1"></span> Standalone';
+            }
+        }
+
+        function saveSCORMScore(score) {
+            var lessonStatus = score >= 75 ? "passed" : "completed";
+
+            if (isScormConnected && scormAPI) {
+                try {
+                    scormAPI.LMSSetValue("cmi.core.score.raw", score.toString());
+                    scormAPI.LMSSetValue("cmi.core.score.min", "0");
+                    scormAPI.LMSSetValue("cmi.core.score.max", "100");
+                    scormAPI.LMSSetValue("cmi.core.lesson_status", lessonStatus);
+                    scormAPI.LMSCommit("");
+                    console.log("SCORM score saved successfully:", score, lessonStatus);
+                } catch (e) {
+                    console.error("Error committing SCORM API:", e);
+                }
+            }
+            updateScoreUI(score, lessonStatus);
+        }
+
+        function finishSCORM() {
+            if (isScormConnected && scormAPI) {
+                try {
+                    scormAPI.LMSFinish("");
+                } catch (e) {
+                    console.log("LMSFinish error", e);
+                }
+            }
+        }
+
+        window.onbeforeunload = function() {
+            finishSCORM();
+        };
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+            lucide.createIcons();
+        }
+
+        function loadSavedTheme() {
+            const saved = localStorage.getItem('theme');
+            if (saved === 'dark') {
+                document.documentElement.classList.add('dark');
+            }
+        }
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+
+            const targetContent = document.getElementById('content-' + tabId);
+            if (targetContent) targetContent.classList.remove('hidden');
+
+            const targetNav = document.getElementById('nav-' + tabId);
+            if (targetNav) targetNav.classList.add('active');
+
+            if (tabId === 'simulasi') {
+                drawPersuasiveGauge(currentGaugeScore || 0);
+            }
+
+            lucide.createIcons();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleGlossary(id) {
+            const detail = document.getElementById(id + '-detail');
+            if (detail) {
+                detail.classList.toggle('hidden');
+            }
+        }
+
+        function selectCaseDecision(step, option) {
+            const fb1 = document.getElementById('caseFeedback1');
+            const fb2 = document.getElementById('caseFeedback2');
+
+            if (step === 1) {
+                fb1.classList.remove('hidden', 'bg-emerald-100', 'text-emerald-800', 'bg-rose-100', 'text-rose-800');
+                if (option === 'B') {
+                    fb1.classList.add('bg-emerald-100', 'text-emerald-800', 'dark:bg-emerald-950', 'dark:text-emerald-200');
+                    fb1.innerHTML = '<strong>Sangat Tepat! (Mr. Kasiadi Feedback):</strong> Opsi B merupakan Thesis Statement formal yang jelas dan membatasi ruang lingkup argumen secara terukur.';
+                } else {
+                    fb1.classList.add('bg-rose-100', 'text-rose-800', 'dark:bg-rose-950', 'dark:text-rose-200');
+                    fb1.innerHTML = '<strong>Kurang Tepat.</strong> Opsi A bersifat informal dan tidak memberikan batasan akademis untuk teks eksposisi.';
+                }
+            } else if (step === 2) {
+                fb2.classList.remove('hidden', 'bg-emerald-100', 'text-emerald-800', 'bg-rose-100', 'text-rose-800');
+                if (option === 'B') {
+                    fb2.classList.add('bg-emerald-100', 'text-emerald-800', 'dark:bg-emerald-950', 'dark:text-emerald-200');
+                    fb2.innerHTML = '<strong>Bukti Sangat Kuat!</strong> Menggunakan data kuantitatif (peningkatan 35%) memperkuat validitas argumen.';
+                } else {
+                    fb2.classList.add('bg-rose-100', 'text-rose-800', 'dark:bg-rose-950', 'dark:text-rose-200');
+                    fb2.innerHTML = '<strong>Bukti Lemah.</strong> Preferensi hiburan pribadi bersifat subjektif dan tidak bernilai pembuktian ilmiah.';
+                }
+            }
+        }
+
+        let labTone = 'formal';
+        let currentGaugeScore = 0;
+        let labTestCount = 0;
+
+        function setLabTone(tone) {
+            labTone = tone;
+            const btnF = document.getElementById('labToneFormal');
+            const btnW = document.getElementById('labToneWeak');
+
+            if (tone === 'formal') {
+                btnF.className = "p-2.5 rounded-xl border-2 border-brand-500 bg-brand-50 dark:bg-brand-950/50 font-bold text-brand-600 dark:text-brand-400";
+                btnW.className = "p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-500";
+            } else {
+                btnW.className = "p-2.5 rounded-xl border-2 border-rose-500 bg-rose-50 dark:bg-rose-950/50 font-bold text-rose-600 dark:text-rose-400";
+                btnF.className = "p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-500";
+            }
+            updateLabPreview();
+        }
+
+        function updateLabPreview() {
+            const topic = document.getElementById('labTopic').value;
+            const evidence = document.getElementById('labEvidence').value;
+            const connector = document.getElementById('labConnector').value;
+
+            const previewBox = document.getElementById('essayLivePreview');
+            if (!previewBox) return;
+
+            let topicTitle = "Cashless Payment Benefits";
+            let thesisText = "In modern urban centers, digital payment systems are vital for financial transparency and transaction speed.";
+            if (topic === 'exercise') {
+                topicTitle = "Daily Exercise & Focus";
+                thesisText = "Integrating 20 minutes of daily physical activity significantly enhances cognitive focus in high school students.";
+            } else if (topic === 'recycling') {
+                topicTitle = "Mandatory Waste Sorting";
+                thesisText = "Implementing mandatory waste sorting in schools is crucial for developing sustainable environmental habits.";
+            }
+
+            if (labTone === 'weak') {
+                thesisText = "I think cashless payments or exercise might be nice for some students.";
+            }
+
+            let evidenceText = "Statistical studies demonstrate a 40% efficiency boost.";
+            if (evidence === 'medium') evidenceText = "Logical reasoning suggests clearer operational structure.";
+            if (evidence === 'low') evidenceText = "My friend says it feels much better.";
+
+            let connText = "Therefore, consequently, as a result...";
+            if (connector === 'weak') connText = "And then, also, by the way...";
+
+            previewBox.innerHTML = `
+                <div><span class="text-brand-400 font-bold">[THESIS]:</span> ${thesisText}</div>
+                <div class="pt-1"><span class="text-sky-400 font-bold">[ARGUMENT & EVIDENCE]:</span> ${evidenceText}</div>
+                <div class="pt-1"><span class="text-indigo-400 font-bold">[CONNECTORS]:</span> ${connText}</div>
+            `;
+        }
+
+        function runLabSimulation() {
+            const evidence = document.getElementById('labEvidence').value;
+            const connector = document.getElementById('labConnector').value;
+
+            let score = 0;
+            if (labTone === 'formal') score += 40; else score += 15;
+            if (evidence === 'high') score += 40; else if (evidence === 'medium') score += 25; else score += 10;
+            if (connector === 'appropriate') score += 20; else score += 5;
+
+            currentGaugeScore = score;
+            drawPersuasiveGauge(score);
+
+            document.getElementById('persuasiveScoreText').innerText = score + '%';
+            
+            const ratingLabel = document.getElementById('persuasiveRatingLabel');
+            if (score >= 80) {
+                ratingLabel.innerText = "Struktur Esai Sangat Persuasif & Solid!";
+                ratingLabel.className = "text-[11px] font-bold text-emerald-600 dark:text-emerald-400";
+            } else if (score >= 50) {
+                ratingLabel.innerText = "Struktur Cukup Baik. Tambahkan data kuantitatif!";
+                ratingLabel.className = "text-[11px] font-bold text-amber-600 dark:text-amber-400";
+            } else {
+                ratingLabel.innerText = "Esai Lemah. Gunakan nada formal & bukti fakta.";
+                ratingLabel.className = "text-[11px] font-bold text-rose-600 dark:text-rose-400";
+            }
+
+            labTestCount++;
+            const tbody = document.getElementById('labLogTableBody');
+            if (tbody) {
+                if (labTestCount === 1) tbody.innerHTML = '';
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-50 dark:hover:bg-slate-900";
+                tr.innerHTML = `
+                    <td class="p-2 font-bold">#${labTestCount}</td>
+                    <td class="p-2 capitalize">${document.getElementById('labTopic').value}</td>
+                    <td class="p-2">${labTone}</td>
+                    <td class="p-2 capitalize">${evidence}</td>
+                    <td class="p-2 font-bold">${score}%</td>
+                    <td class="p-2"><span class="px-2 py-0.5 rounded text-[10px] font-bold ${score >= 75 ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}">${score >= 75 ? 'OPTIMAL' : 'PERLU PERBAIKAN'}</span></td>
+                `;
+                tbody.prepend(tr);
+            }
+        }
+
+        function resetLabSimulation() {
+            setLabTone('formal');
+            document.getElementById('labEvidence').value = 'high';
+            document.getElementById('labConnector').value = 'appropriate';
+            updateLabPreview();
+            currentGaugeScore = 0;
+            drawPersuasiveGauge(0);
+            document.getElementById('persuasiveScoreText').innerText = "0%";
+            document.getElementById('persuasiveRatingLabel').innerText = "Klik 'Test & Analyze Essay' untuk evaluasi.";
+        }
+
+        function drawPersuasiveGauge(score) {
+            const canvas = document.getElementById('persuasiveCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height - 15;
+            const radius = 80;
+
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius, Math.PI, 2 * Math.PI, false);
+            ctx.lineWidth = 16;
+            ctx.strokeStyle = '#e2e8f0';
+            ctx.stroke();
+
+            const angle = Math.PI + (score / 100) * Math.PI;
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius, Math.PI, angle, false);
+            ctx.lineWidth = 16;
+            ctx.strokeStyle = score >= 75 ? '#0284c7' : (score >= 50 ? '#f59e0b' : '#f43f5e');
+            ctx.stroke();
+        }
+
+        const classifierData = [
+            { id: 1, text: "In my opinion, online learning is mandatory for all students.", correct: "thesis" },
+            { id: 2, text: "Consequently, high schools should integrate AI tools safely.", correct: "reiteration" },
+            { id: 3, text: "Firstly, research indicates a 25% increase in reading retention.", correct: "argument" }
+        ];
+
+        function renderClassifierGame() {
+            const container = document.getElementById('classifierList');
+            if (!container) return;
+            container.innerHTML = '';
+
+            classifierData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = "p-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2";
+                div.innerHTML = `
+                    <div class="flex-1 font-medium text-slate-700 dark:text-slate-300">
+                        ${index + 1}. "${item.text}"
+                    </div>
+                    <select id="classSelect_${index}" class="p-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 font-bold">
+                        <option value="">-- Choose Component --</option>
+                        <option value="thesis">Thesis Statement</option>
+                        <option value="argument">Argument & Evidence</option>
+                        <option value="reiteration">Reiteration / Conclusion</option>
+                    </select>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function checkClassifierGame() {
+            let correct = 0;
+            classifierData.forEach((item, index) => {
+                const val = document.getElementById(`classSelect_${index}`).value;
+                if (val === item.correct) correct++;
+            });
+
+            const fb = document.getElementById('classifierFeedback');
+            fb.classList.remove('hidden', 'bg-emerald-100', 'text-emerald-800', 'bg-amber-100', 'text-amber-800');
+
+            if (correct === classifierData.length) {
+                fb.classList.add('bg-emerald-100', 'text-emerald-800', 'dark:bg-emerald-950', 'dark:text-emerald-200');
+                fb.innerHTML = `<strong>Sempurna!</strong> Anda berhasil mengklasifikasikan seluruh ${correct}/${classifierData.length} komponen teks!`;
+            } else {
+                fb.classList.add('bg-amber-100', 'text-amber-800', 'dark:bg-amber-950', 'dark:text-amber-200');
+                fb.innerHTML = `Anda menjawab <strong>${correct}/${classifierData.length}</strong> dengan benar. Pelajari kembali materi dan coba lagi.`;
+            }
+        }
+
+        const quizQuestions = [
+            {
+                id: 1,
+                q: "What is the primary social purpose of an Analytical Exposition text?",
+                opts: [
+                    "To persuade readers that a particular topic/issue is important to discuss",
+                    "To entertain readers with a fictional story",
+                    "To describe a specific person or tourist spot in detail",
+                    "To explain step-by-step instructions on how to build a tool"
+                ],
+                ans: 0
+            },
+            {
+                id: 2,
+                q: "Which structural part introduces the topic and writer's stance?",
+                opts: ["Resolution", "Thesis", "Reiteration", "Orientation"],
+                ans: 1
+            },
+            {
+                id: 3,
+                q: "According to the reading passage, why is digital literacy essential?",
+                opts: [
+                    "It allows students to play online games without lag",
+                    "It helps students distinguish between scientific truth and fake news",
+                    "It replaces all teachers with artificial intelligence",
+                    "It makes smartphones mandatory in all exams"
+                ],
+                ans: 1
+            },
+            {
+                id: 4,
+                q: "Which word represents a Causal Conjunction?",
+                opts: ["Beautifully", "Consequently", "Yesterday", "Underneath"],
+                ans: 1
+            },
+            {
+                id: 5,
+                q: "What is the function of the Reiteration paragraph?",
+                opts: [
+                    "To introduce a completely new topic",
+                    "To restate the writer's main thesis and summarize arguments",
+                    "To list funny personal anecdotes",
+                    "To ask the reader multiple unanswered questions"
+                ],
+                ans: 1
+            }
+        ];
+
+        function renderQuiz() {
+            const container = document.getElementById('quizQuestionsContainer');
+            if (!container) return;
+            container.innerHTML = '';
+
+            quizQuestions.forEach((q, qIndex) => {
+                const box = document.createElement('div');
+                box.className = "bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-3";
+                
+                let optsHTML = '';
+                q.opts.forEach((opt, oIndex) => {
+                    optsHTML += `
+                        <label class="flex items-start p-3 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-900 cursor-pointer text-xs">
+                            <input type="radio" name="q_${qIndex}" value="${oIndex}" class="mt-0.5 text-brand-600">
+                            <span class="ml-2.5 text-slate-700 dark:text-slate-200">${opt}</span>
+                        </label>
+                    `;
+                });
+
+                box.innerHTML = `
+                    <div class="font-bold text-xs text-brand-600 dark:text-brand-400">Question ${qIndex + 1}</div>
+                    <p class="font-bold text-slate-900 dark:text-white text-xs sm:text-sm">${q.q}</p>
+                    <div class="space-y-2">${optsHTML}</div>
+                `;
+                container.appendChild(box);
+            });
+        }
+
+        function submitScormQuiz() {
+            let scoreCount = 0;
+            let answered = 0;
+
+            quizQuestions.forEach((q, idx) => {
+                const sel = document.querySelector(`input[name="q_${idx}"]:checked`);
+                if (sel) {
+                    answered++;
+                    if (parseInt(sel.value) === q.ans) scoreCount++;
+                }
+            });
+
+            if (answered < quizQuestions.length) {
+                alert(`Mohon jawab seluruh ${quizQuestions.length} pertanyaan sebelum mengirim hasil!`);
+                return;
+            }
+
+            const rawScore = Math.round((scoreCount / quizQuestions.length) * 100);
+            saveSCORMScore(rawScore);
+            showQuizModal(rawScore);
+        }
+
+        function showQuizModal(score) {
+            const modal = document.getElementById('quizResultModal');
+            const icon = document.getElementById('resultIcon');
+            const title = document.getElementById('resultTitle');
+            const subtitle = document.getElementById('resultSubtitle');
+            const scoreVal = document.getElementById('finalScoreVal');
+            const statusVal = document.getElementById('finalStatusVal');
+
+            scoreVal.innerText = score;
+
+            if (score >= 75) {
+                icon.className = "w-16 h-16 mx-auto rounded-full bg-emerald-100 text-emerald-600 dark:bg-emerald-950 dark:text-emerald-400 flex items-center justify-center text-3xl";
+                icon.innerHTML = '<i data-lucide="check-circle" class="w-8 h-8"></i>';
+                title.innerText = "Selamat! Anda Lulus!";
+                title.className = "text-2xl font-extrabold text-emerald-600 dark:text-emerald-400";
+                subtitle.innerText = "Nilai Anda memenuhi batas KKM 75/100 di SMAN 1 Ngoro.";
+                statusVal.innerText = "PASSED";
+                statusVal.className = "text-lg font-bold mt-1 text-emerald-600 dark:text-emerald-400";
+            } else {
+                icon.className = "w-16 h-16 mx-auto rounded-full bg-rose-100 text-rose-600 dark:bg-rose-950 dark:text-rose-400 flex items-center justify-center text-3xl";
+                icon.innerHTML = '<i data-lucide="x-circle" class="w-8 h-8"></i>';
+                title.innerText = "Belum Mencapai KKM";
+                title.className = "text-2xl font-extrabold text-rose-600 dark:text-rose-400";
+                subtitle.innerText = "KKM kelulusan adalah 75/100. Silakan pelajari kembali materi.";
+                statusVal.innerText = "COMPLETED";
+                statusVal.className = "text-lg font-bold mt-1 text-amber-600 dark:text-amber-400";
+            }
+
+            modal.classList.remove('hidden');
+            lucide.createIcons();
+            modal.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function resetQuiz() {
+            document.querySelectorAll('#scormQuizForm input[type="radio"]').forEach(r => r.checked = false);
+            document.getElementById('quizResultModal').classList.add('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function updateScoreUI(score, status) {
+            const dashScore = document.getElementById('dashScoreVal');
+            const dashBar = document.getElementById('dashScoreBar');
+            const dashTag = document.getElementById('dashStatusTag');
+
+            if (dashScore) dashScore.innerText = score + ' / 100';
+            if (dashBar) dashBar.style.width = score + '%';
+            if (dashTag) {
+                if (score >= 75) {
+                    dashTag.innerText = 'PASSED';
+                    dashTag.className = 'px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-semibold';
+                } else {
+                    dashTag.innerText = 'COMPLETED';
+                    dashTag.className = 'px-2 py-0.5 rounded bg-amber-100 text-amber-800 font-semibold';
+                }
+            }
+        }
+
+        function saveStudentNotes() {
+            const val = document.getElementById('studentNotes').value;
+            localStorage.setItem('expo_student_notes', val);
+            const msg = document.getElementById('notesSaveMsg');
+            if (msg) {
+                msg.classList.remove('hidden');
+                setTimeout(() => msg.classList.add('hidden'), 2000);
+            }
+        }
+
+        function loadStudentNotes() {
+            const saved = localStorage.getItem('expo_student_notes');
+            if (saved && document.getElementById('studentNotes')) {
+                document.getElementById('studentNotes').value = saved;
+            }
+        }
+
+        function saveReflections() {
+            const refs = ['ref1', 'ref2', 'ref3', 'ref4'];
+            refs.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) localStorage.setItem('expo_' + id, el.checked);
+            });
+        }
+
+        function loadReflections() {
+            const refs = ['ref1', 'ref2', 'ref3', 'ref4'];
+            refs.forEach(id => {
+                const saved = localStorage.getItem('expo_' + id);
+                const el = document.getElementById(id);
+                if (el && saved !== null) {
+                    el.checked = (saved === 'true');
+                }
+            });
+        }
+
+        window.onload = function() {
+            loadSavedTheme();
+            initSCORM();
+            updateLabPreview();
+            renderClassifierGame();
+            renderQuiz();
+            loadStudentNotes();
+            loadReflections();
+            lucide.createIcons();
+        };
+    </script>
+</body>
+</html>
